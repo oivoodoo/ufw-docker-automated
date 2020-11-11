@@ -77,14 +77,14 @@ def manage_ufw():
                                        shell=True)
                         # Example: 172.17.0.1 - host.docker.internal ip address
                         print(f"Adding UFW rule: {container_port_num}/{container_port_protocol} of container {docker_ip}")
-                        subprocess.run([f"sudo ufw route allow proto {container_port_protocol} \
+                        subprocess.run([f"sudo ufw allow proto {container_port_protocol} \
                                             from any to {docker_ip} \
                                             port {container_port_num}"],
                                        stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True,
                                        shell=True)
                         # Example: 172.19.0.1 - bridge gateway ip address
                         print(f"Adding UFW rule: {container_port_num}/{container_port_protocol} of container {gateway_ip}")
-                        subprocess.run([f"sudo ufw route allow proto {container_port_protocol} \
+                        subprocess.run([f"sudo ufw allow proto {container_port_protocol} \
                                             from any to {gateway_ip} \
                                             port {container_port_num}"],
                                        stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True,
